@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container toparea padToparea">
+	<div class="underlined-title">
+
+		<div class="editContent">
+			<h1 class="text-center latestitems">{{product.title}}</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="productbox">
+				<img src="{{media_url}}{{product.image.url}}" alt="">
+				<br/>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<a href="{% url 'addtocart' product.id %}" class="btn btn-buynow"><strike>Rs.{{product.marked_price}}</strike> Rs.{{product.selling_price}}</a>
+			<div class="properties-box">
+				<ul class="unstyle">
+					<li><b class="propertyname">Category:</b>{{product.category}}</li>
+					<li><b class="propertyname">Marked Price:</b>{{product.marked_price}}</li>
+					<li><b class="propertyname">Selling Price:</b>{{product.selling_price}}</li>
+					<li><b class="propertyname">Return Policy:</b>{{product.return_policy}}</li>
+					<li><b class="propertyname">Description:</b>{{product.description}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<br>
+
+</div>
+
+{% endblock %}

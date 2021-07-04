@@ -1,0 +1,46 @@
+{% extends 'AdminPages/adminIndex.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+
+
+<div class="container toparea adminPadToparea">
+    <div class="underlined-title">
+
+        <div class="editContent">
+            <h1 class="text-center latestitems">Admin Login</h1>
+        </div>
+        <div class="wow-hr type_short">
+            <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            </span>
+        </div>
+    </div>
+<div class="col-md-12 col-md-offset-3">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% load widget_tweaks %}
+                <fieldset">
+                        <label class="edd-label">Username</label>
+                        {{form.username|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">Password</label>
+                        {{form.password|add_class:"inputFieldCSS" }}
+                </fieldset>
+                {% if error %}
+                <b class="error">{{error}}</b><br>
+                {% endif %}
+                <input type="submit" class="edd-submit button" value="Log In As Administrator">
+            </form>
+
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

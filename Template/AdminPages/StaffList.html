@@ -1,0 +1,50 @@
+{% extends "AdminPages/adminIndex.html" %}
+
+
+{% block title %}Order Detail {% endblock %}
+
+{% block content %}
+
+
+
+<div class="container toparea adminPadToparea">
+    <div class="underlined-title">
+
+        <div class="editContent">
+            <h1 class="text-center latestitems">Staff List</h1>
+        </div>
+        <div class="wow-hr type_short">
+            <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            </span>
+        </div>
+    </div>
+<div class="col-md-11 col-md-offset-2">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <table class="table-striped">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Full Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email Address</th>
+                </tr>
+                {% for staff in StaffUserList %}
+                <tr>
+                    <th>{{forloop.counter}}</th>
+                    <th>{{staff.full_name}}</th>
+                    <th>{{staff.mobile}}</th>
+                    <th>{{staff.user.email}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+

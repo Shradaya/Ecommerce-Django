@@ -1,0 +1,39 @@
+{% extends 'AdminPages/adminIndex.html' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+
+
+<div class="container toparea adminPadToparea">
+    <div class="underlined-title">
+
+        <div class="editContent">
+            <h1 class="text-center latestitems">Messages</h1>
+        </div>
+        <div class="wow-hr type_short">
+            <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            </span>
+        </div>
+    </div>
+<div class="col-md-12 col-md-offset-1">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+      <div class="messageDIV">
+      <H1> Recent Messages </H1>
+        {% for m in msg %}
+         <h3>{{ m.FullName }}</h3>
+         <h6>{{ m.Email }} -- {{ m.Date }}</h6>
+         <p>{{ m.Message }}</p><br>
+      {% endfor %}
+      </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

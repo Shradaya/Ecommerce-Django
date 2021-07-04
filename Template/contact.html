@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container toparea padToparea">
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">Get in Touch</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+	    <div class="formClass">
+    {% if messages %}
+        {% for message in messages %}
+        <div  class="success">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<form method="post" id="contactform">
+     			{% csrf_token %}
+				{% load widget_tweaks %}
+
+				<div class="form">
+					{% render_field form.FullName placeholder="Your Name *" %}
+					{% render_field form.Email placeholder="Email *" %}
+					{% render_field form.Message placeholder="Message *" %}
+					<input type="submit" class="clearfix btn" value="Send">
+				</div>
+			</form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

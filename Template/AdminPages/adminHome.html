@@ -1,0 +1,47 @@
+{% extends 'AdminPages/adminIndex.html' %}
+
+{% block content %}
+
+<div class="container toparea adminPadToparea">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>{{title}}</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Order ID </th>
+                        <th>Customer</th>
+                        <th>Ordered On</th>
+                        <th>Order Status</th>
+                        <th>Payment Completed</th>
+                        <th>Payment Method</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in Orders %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a href="{% url 'adminOrderDetailView' order.id %}">ORDER_{{order.id}}</a></td>
+                        <td>{{order.ordered_by}}</td>
+                        <td>{{order.created_at}}</td>
+                        <td>{{order.order_status}}</td>
+                        <td>{{order.payment_completed}}</td>
+                        <td>{{order.payment_method}}</td>
+                        <td>{{order.total}}</td>
+                        <td>
+                        <a href="{% url 'manageorder' order.id %}?action=OP" class="btn btn-primary">+</a>
+                            <a href="{% url 'manageorder' order.id %}?action=OTW" class="btn btn-warning"> > </a>
+                            <a href="{% url 'manageorder' order.id %}?action=OCO" class="btn btn-info">-</a>
+                            <a href="{% url 'manageorder' order.id %}?action=OCA" class="btn btn-danger"> x </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

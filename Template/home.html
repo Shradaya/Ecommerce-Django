@@ -1,0 +1,140 @@
+    {% extends "index.html"  %}
+
+    {% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="text-homeimage">
+                    <div class="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
+                         Get the Finest Handmade Products
+                    </div>
+                    <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+                         Naso for everything
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+<!-- STEPS =============================-->
+<div class="item content">
+    <div class="container toparea">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="col editContent">
+                    <span class="numberstep"><i class="fa fa-shopping-cart"></i></span>
+                    <h3 class="numbertext">Choose our Products</h3>
+                    <p>
+                         The thing with handmade items: They convey the love with which the item is made. Choose the best quality handmade products.
+                    </p>
+                </div>
+                <!-- /.col-md-4 -->
+            </div>
+            <!-- /.col-md-4 col -->
+            <div class="col-md-4 editContent">
+                <div class="col">
+                    <span class="numberstep"><i class="fa fa-gift"></i></span>
+                    <h3 class="numbertext">Multiple means of Payment</h3>
+                    <p>
+                         You can pay in anyway you prefer so you don't have to think about how will you make the payments.
+                    </p>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.col-md-4 col -->
+            <div class="col-md-4 editContent">
+                <div class="col">
+                    <span class="numberstep"><i class="fa fa-phone"></i></span>
+                    <h3 class="numbertext">Contact Us</h3>
+                    <p>
+                         We make your designs come to life. Describe us the product you have imagined and we will make that come to life. (Nasohandmade@gmail.com or go message us from the contact page)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- LATEST ITEMS =============================-->
+<section class="item content">
+    <div class="container latest-items">
+        <div class="underlined-title">
+            <div class="editContent">
+                <h1 class="text-center">LATEST ITEMS</h1>
+            </div>
+            <div class="wow-hr type_short">
+                <span class="wow-hr-h">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            {% for p in product_list %}
+            <div class="col-md-4">
+                <div class="productbox">
+                    <div class="fadeshop">
+                        <div class="captionshop text-center" >
+                            <h3>{{p.title}}</h3>
+                            <p>
+                                 {{p.description}}
+                            </p>
+                            <p>
+                                <a href="{% url 'addtocart' p.id %}" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                                <a href="{% url 'productdetail' p.slug %}" class="learn-more detailslearn"></i> Details</a>
+                            </p>
+                        </div>
+                        <span class="maxproduct"><img src="{{media.url}}{{ p.image.url }}" alt=""></span>
+                    </div>
+                    <div class="product-details">
+                        <a href="#">
+                        <h1>{{p.title}}</h1>
+                        </a>
+                        <span class="price">
+                        <span class="edd_price"><strike>Rs. {{p.marked_price}}</strike> Rs. {{p.selling_price}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+<!-- BUTTON =============================-->
+<div class="item content">
+    <div class="container text-center">
+        <a href="{% url 'AllProducts' %}" class="homebrowseitems">Browse All Products
+        <div class="homebrowseitemsicon">
+            <i class="fa fa-star fa-spin"></i>
+        </div>
+        </a>
+    </div>
+</div>
+<br/>
+
+
+</section>
+
+
+<!-- CALL TO ACTION =============================-->
+<section class="content-block" style="background-color:#00bba7;">
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
+                <h1 class="callactiontitle">Get gift cards as you buy.<span class="callactionbutton"><i class="fa fa-gift"></i></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+
+    {% endblock %}

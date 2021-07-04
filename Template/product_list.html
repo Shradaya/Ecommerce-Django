@@ -1,0 +1,92 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container toparea padToparea">
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">OUR PRODUCTS</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+
+    <div class="Searchbar">
+        <form action="{% url 'search' %}">
+            <ul>
+                <li><input type="text" placeholder="Name" name="a"></li>
+                <li><input type="number" placeholder="Low Price" name="L"></li>
+                <li><input type="number" placeholder="High Price" name="H"></li>
+                <li>
+                   <select name='c'>
+                        <option disabled selected value>--</option>
+                        <option>Earring</option>
+                    </select>
+                </li>
+                <li><input type="submit" value="Filter"></li>
+            </ul>
+        </form>
+    </div>
+    <div class="formClass">
+    {% if messages %}
+        {% for message in messages %}
+        <div  class="success">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+	<div class="row">
+
+            {% for p in product_list %}
+            <div class="col-md-4">
+                <div class="productbox">
+                    <div class="fadeshop">
+                        <div class="captionshop text-center" >
+                            <h3>{{p.title}}</h3>
+                            <p>
+                                 {{p.description}}
+                            </p>
+                            <p>
+                                <a href="{% url 'addtocart' p.id %}" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
+                                <a href="{% url 'productdetail' p.slug %}" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
+                            </p>
+                        </div>
+                        <span class="maxproduct"><img src="{{media.url}}{{ p.image.url }}" alt=""></span>
+                    </div>
+                    <div class="product-details">
+                        <a href="{% url 'productdetail' p.slug %}">
+                        <h1>{{p.title}}</h1>
+                        </a>
+                        <span class="price">
+                        <span class="edd_price"><strike>Rs.{{p.marked_price}}</strike> Rs.{{p.selling_price}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}		<!-- /.productbox -->
+       </div>
+
+		<div class="pagination">
+            <span class="step-links">
+                {% if product_list.has_previous %}
+                    <a href="?page=1"> &laquo; </a>
+                    <a href="?page={{ product_list.previous_page_number }}"><input type="button" value="Previous"></a>
+                {% endif %}
+                <span class="current">
+                    Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.
+                </span>
+                {% if product_list.has_next %}
+                    <a href="?page={{ product_list.next_page_number }}"><input type="button" value="Next"></a>
+                    <a href="?page={{ product_list.paginator.num_pages }}">&raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+</div>
+</div>
+{% endblock %}

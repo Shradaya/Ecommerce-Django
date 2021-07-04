@@ -1,0 +1,54 @@
+{% extends "AdminPages/adminIndex.html" %}
+
+
+{% block title %}Order Detail {% endblock %}
+
+{% block content %}
+<div class="container toparea adminPadToparea">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h3>Order Detail</h3><hr>
+            <p><span>Order ID: </span> ORDER_{{ord_obj.id}}</p>
+            <p><span>Order On: </span> {{ord_obj.created_at}}</p>
+            <p><span>Customer Information: </span>{{ord_obj.ordered_by}}, {{ord_obj.mobile}}, {{ord_obj.email}}</p>
+            <p><span>Shipping Address: </span> {{ord_obj.shipping_address}} </p>
+            <p><span>Order Status: </span> {{ord_obj.order_status}}</p>
+            <p><span>Change Order Status: </span>
+            <a href="{% url 'manageorder' ord_obj.id %}?action=OP" class="btn btn-primary">Order Processing</a>
+            <a href="{% url 'manageorder' ord_obj.id %}?action=OTW" class="btn btn-warning">On The Way</a>
+            <a href="{% url 'manageorder' ord_obj.id %}?action=OCO" class="btn btn-info">Order Completed</a>
+            <a href="{% url 'manageorder' ord_obj.id %}?action=OCA" class="btn btn-danger">Order Cancelled</a>
+            </p>
+            <h4>Ordered Items</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Item</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cp in ord_obj.cart.cartproduct_set.all %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a target="_blank" href="{% url 'productdetail' cp.product.slug %}">{{cp.product.title}}</a></td>
+                        <td>{{cp.rate}}</td>
+                        <td>{{cp.quantity}}</td>
+                        <td>{{cp.subtotal}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th colspan="4" class="text-right">Total: </th>
+                        <th>Rs {{ord_obj.total}}/-</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block title %}Customer Registration{% endblock %}
+
+{% block content %}
+<div class="container toparea padToparea">
+    <div class="underlined-title">
+
+        <div class="editContent">
+            <h1 class="text-center latestitems">Customer Registration</h1>
+        </div>
+        <div class="wow-hr type_short">
+            <span class="wow-hr-h">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            </span>
+        </div>
+    </div>
+<div class="col-md-12 col-md-offset-3">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <hr>
+            <div class="error">
+                {% if error %}
+                        {{error}}
+                {% endif %}
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% load widget_tweaks %}
+                <fieldset">
+                        <label class="edd-label">Full Name</label>
+                        {{form.full_name|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">User Name</label>
+                        {{form.username|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">Address</label>
+                        {{form.address|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">Phone Number</label>
+                        {{form.mobile|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">Email</label>
+                        {{form.email|add_class:"inputFieldCSS" }}
+                        <label class="edd-label">Password</label>
+                        {{form.password|add_class:"inputFieldCSS" }}
+                </fieldset>
+                <input type="submit" class="edd-submit button" value="Sign Up">
+            </form>
+
+            <p> Already have an account? <a href="{% url 'customerlogin' %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
