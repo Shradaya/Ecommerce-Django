@@ -92,6 +92,8 @@ a:hover {
   padding-bottom:26px;
   font-size:18px;
   font-weight:700;
+  margin-left:10px;
+
 }
 
 .dropbtn:hover{
@@ -139,7 +141,7 @@ a:hover {
 	display:block;
 }
 .logo span{
-	padding-left:10px;
+	padding-left:0px;
 }
 .navbar-brand img{
 	margin:auto;

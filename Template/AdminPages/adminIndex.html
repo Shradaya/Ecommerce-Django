@@ -21,6 +21,9 @@
 	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
 	<div class="fluid-container">
 		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			</button>
 			<a href="{% url 'adminHome' %}" class="navbar-brand brand">
 				<div class="logo"><img src="{% static 'images\logo.png' %}"><span>NASOHANDMADE ADMINISTRATION
 				</span></div></a>
@@ -31,7 +34,7 @@
 				<li class="propClone"><a href="{% url 'adminallorderslist' %}">Orders</a></li>
 				<li class="propClone"><a href="{% url 'adminproductlist' %}">Products</a></li>
 				<li class="propClone"><a href="{% url 'viewmessages' %}">Message</a></li>
-				<li class="propClone dropdown"><button class="dropbtn"><p>{{user.username}}</p></button>											   <div class="dropdown-content">
+				<li class="propClone dropdown"><button class="dropbtn">{{user.username}}</button>											   <div class="dropdown-content">
 				<a href="{% url 'stafflist' %}">Staff List</a>
                 <a  href="{% url 'customerlogout' %}">Logout</a>
 
@@ -62,9 +65,9 @@
 </div>-->
 
 <!-- SCRIPTS =============================-->
-<script src="js/jquery-.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/anim.js"></script>
+<script src="{% static 'js/jquery-.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/anim.js' %}"></script>
 <script>
 //----HOVER CAPTION---//
 jQuery(document).ready(function ($) {

@@ -21,6 +21,9 @@
 	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
 	<div class="fluid-container">
 		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			</button>
 			<a href="/" class="navbar-brand brand">
 				<div class="logo"><img src="{% static 'images\logo.png' %}"><span>NASOHANDMADE
 				</span></div></a>
@@ -82,9 +85,9 @@
 </div>
 
 <!-- SCRIPTS =============================-->
-<script src="js/jquery-.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/anim.js"></script>
+<script src="{% static 'js/jquery-.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/anim.js' %}"></script>
 <script>
 //----HOVER CAPTION---//
 jQuery(document).ready(function ($) {
